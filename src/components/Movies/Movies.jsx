@@ -28,7 +28,7 @@ export const Movies = () => {
         onChange={onChangeInput}
         value={searchValue}
       />
-      <button type="button" onClick={handleClickButton}>
+      <button type="submit" onClick={handleClickButton}>
         Search
       </button>
 

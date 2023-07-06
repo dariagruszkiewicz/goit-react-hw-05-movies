@@ -1,9 +1,10 @@
 import { fetchApi } from 'components/services/api';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
+  const { movieId } = useParams();
 
   const showMovies = async () => {
     const movies = await fetchApi();
@@ -21,7 +22,9 @@ export const Home = () => {
         <h1>Trending today</h1>
         {movies.map(item => (
           <li key={item.id}>
-            <Link>{item.title ? item.title : item.name}</Link>
+            <Link to={`/movies/${item.id}`}>
+              {item.title ? item.title : item.name}
+            </Link>
           </li>
         ))}
       </ul>

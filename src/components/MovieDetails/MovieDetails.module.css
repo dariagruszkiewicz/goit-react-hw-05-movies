@@ -1,0 +1,17 @@
+.movie_card {
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+
+.movie_additional {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+img {
+  max-width: 300px;
+  margin: 10px;
+}
