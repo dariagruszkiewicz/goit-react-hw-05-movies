@@ -1,10 +1,9 @@
 import { fetchApi } from 'components/services/api';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
-  const { movieId } = useParams();
 
   const showMovies = async () => {
     const movies = await fetchApi();

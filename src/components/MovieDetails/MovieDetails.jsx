@@ -14,6 +14,7 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     showMovieDetails();
+    // eslint-disable-next-line
   }, []);
 
   const { poster_path, title, release_date, vote_average, overview, genres } =
