@@ -11,7 +11,8 @@ export const Movies = () => {
     setSearchValue(e.target.value);
   };
 
-  const handleClickButton = async () => {
+  const handleClickButton = async e => {
+    e.preventDefault();
     const moviesByQuery = await fetchApiByQuery(searchValue);
     setSearchValue(searchValue);
     console.log(moviesByQuery);
@@ -22,16 +23,15 @@ export const Movies = () => {
 
   return (
     <>
-      <input
-        className={css.input}
-        type="text"
-        onChange={onChangeInput}
-        value={searchValue}
-      />
-      <button type="submit" onClick={handleClickButton}>
-        Search
-      </button>
-
+      <form onSubmit={handleClickButton}>
+        <input
+          className={css.input}
+          type="text"
+          onChange={onChangeInput}
+          value={searchValue}
+        />
+        <button type="submit">Search</button>
+      </form>
       <ul>
         {movies.map(item => (
           <li key={item.id}>

@@ -8,6 +8,7 @@ export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 export const fetchApi = async () => {
   const response = await axios.get(`${URL}/trending/all/day`, {
     params: { api_key: API_KEY },
+    language: 'en-US',
   });
   const data = response.data.results;
   return data;
@@ -19,6 +20,7 @@ export const fetchApiByQuery = async searchValue => {
     params: {
       query: searchValue,
       api_key: API_KEY,
+      language: 'en-US',
     },
   });
   const data = response.data.results;
@@ -27,12 +29,44 @@ export const fetchApiByQuery = async searchValue => {
 
 //wyszukiwanie pełnej informacji o filmie
 export const fetchApiDetails = async movieId => {
-  const response = await axios.get(`${URL}/movie/${movieId}`, {
+  try {
+    const response = await axios.get(`${URL}/movie/${movieId}`, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+      },
+    });
+    const data = response.data;
+    console.log(data);
+    return data;
+  } catch {
+    throw new Error('No movies found');
+  }
+};
+
+//zapytanie o zespół aktorski
+export const fetchApiCredits = async movieId => {
+  const response = await axios.get(`${URL}/movie/${movieId}/credits`, {
     params: {
       api_key: API_KEY,
+      language: 'en-US',
     },
   });
-  const data = response.data;
+  const data = response.data.cast;
+  console.log(data);
+  return data;
+};
+
+//zapytanie o recenzje
+export const fetchApiRewievs = async movieId => {
+  const response = await axios.get(`${URL}/movie/${movieId}/reviews`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+    },
+  });
+  const data = response.data.results;
+
   console.log(data);
   return data;
 };

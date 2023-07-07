@@ -1,0 +1,9 @@
+.cast_item {
+  display: flex;
+}
+.cast_item_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

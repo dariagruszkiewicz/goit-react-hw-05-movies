@@ -1,6 +1,6 @@
 import { fetchApiDetails, IMG_URL } from 'components/services/api';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 export const MovieDetails = () => {
@@ -38,9 +38,14 @@ export const MovieDetails = () => {
       </div>
       <div className={css.movie_additional}>
         <p>Additional information</p>
-        <Link to="/">Cast</Link>
-        <Link to="/">Reviews</Link>
+        <Link to="cast" className={css.link}>
+          Cast
+        </Link>
+        <Link to="reviews" className={css.link}>
+          Reviews
+        </Link>
       </div>
+      <Outlet />
     </>
   );
 };
