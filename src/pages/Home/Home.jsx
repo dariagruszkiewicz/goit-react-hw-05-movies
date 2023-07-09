@@ -1,8 +1,8 @@
-import { fetchApi } from 'components/services/api';
+import { fetchApi } from 'services/api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   const showMovies = async () => {
@@ -30,3 +30,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

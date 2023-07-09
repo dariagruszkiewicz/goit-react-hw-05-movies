@@ -1,11 +1,12 @@
 import css from './Movies.module.css';
 import { useState } from 'react';
-import { fetchApiByQuery } from 'components/services/api';
-import { Link } from 'react-router-dom';
+import { fetchApiByQuery } from 'services/api';
+import { Link, useLocation } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchValue, setSearchValue] = useState('');
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   const onChangeInput = e => {
     setSearchValue(e.target.value);
@@ -35,7 +36,7 @@ export const Movies = () => {
       <ul>
         {movies.map(item => (
           <li key={item.id}>
-            <Link to={`/movies/${item.id}`}>
+            <Link to={`/movies/${item.id}`} state={{ from: location }}>
               {item.title ? item.title : item.name}
             </Link>
           </li>
@@ -44,3 +45,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

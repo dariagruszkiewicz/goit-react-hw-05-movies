@@ -6,7 +6,7 @@ export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 //wyszukiwanie najpopularniejszych filmów
 export const fetchApi = async () => {
-  const response = await axios.get(`${URL}/trending/all/day`, {
+  const response = await axios.get(`${URL}/trending/movie/day`, {
     params: { api_key: API_KEY },
     language: 'en-US',
   });

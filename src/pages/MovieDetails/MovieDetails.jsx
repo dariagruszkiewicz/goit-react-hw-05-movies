@@ -1,11 +1,14 @@
-import { fetchApiDetails, IMG_URL } from 'components/services/api';
+import { fetchApiDetails, IMG_URL } from 'services/api';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
+import BackLink from 'components/BackLink/Backlink';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   const showMovieDetails = async () => {
     const details = await fetchApiDetails(movieId);
@@ -21,6 +24,7 @@ export const MovieDetails = () => {
     movieDetails;
   return (
     <>
+      <BackLink to={backLinkHref}>Go back</BackLink>
       <div className={css.movie_card}>
         <div>
           <img src={`${IMG_URL}/${poster_path}`} alt={title} />
@@ -49,3 +53,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;
