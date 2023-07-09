@@ -17,8 +17,10 @@ const StyledLink = styled(Link)`
   margin: 10px;
   padding: 5px;
 
-  :hover {
-    color: orangered;
+  &:hover,
+  &:focus {
+    border-color: red;
+    color: red;
   }
 `;
 
